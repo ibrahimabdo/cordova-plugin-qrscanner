@@ -18,6 +18,8 @@ class QRScanner : CDVPlugin, AVCaptureMetadataOutputObjectsDelegate {
                         if device.isFocusPointOfInterestSupported {
                             device.focusPointOfInterest = focusPoint
                             device.focusMode = AVCaptureDevice.FocusMode.continuousAutoFocus
+                            print("isFocusPointOfInterestSupported")
+
                         } else {
                             print("isFocusPointOfInterestSupported failed")
                         }
@@ -25,6 +27,7 @@ class QRScanner : CDVPlugin, AVCaptureMetadataOutputObjectsDelegate {
                         if device.isExposurePointOfInterestSupported {
                             device.exposurePointOfInterest = focusPoint
                             device.exposureMode = AVCaptureDevice.ExposureMode.continuousAutoExposure
+                            print("isExposurePointOfInterestSupported")
                         } else {
                             print("isExposurePointOfInterestSupported failed")
                         }
@@ -351,7 +354,7 @@ class QRScanner : CDVPlugin, AVCaptureMetadataOutputObjectsDelegate {
             nextScanningCommand = command
             scanning = true
 
-            Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { timer in
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
                 self.autoFocusInterval()
             }
         }
